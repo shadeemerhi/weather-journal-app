@@ -46,9 +46,9 @@ app.post('/addData', addData);
 
 function addData(request, response) {
     let newEntry = {
-        temperature = request.body.temperature,
-        date = request.body.date,
-        userRes = request.body.userRes
+        temperature: request.body.temperature,
+        date: request.body.date,
+        userResponse: request.body.userResponse
     }
     projectData.push(newEntry);
 }
