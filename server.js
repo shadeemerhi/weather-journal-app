@@ -42,17 +42,6 @@ function sendData (request, response) {
     console.log('Response Sent');
 }
 
-// Post Route
-// app.post('/addData', addData);
-
-// function addData(request, response) {
-//     let newEntry = {
-//         temperature: request.body.temperature,
-//         date: request.body.date,
-//         userResponse: request.body.userResponse
-//     }
-//     projectData.push(newEntry);
-// }
 
 app.post('/addData', function (request, response) {
         let newEntry = {
