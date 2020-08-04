@@ -44,6 +44,7 @@ const getWeatherData = async (baseURL, city, apiKey) => {
     console.log('Check 2 - Inside API call');
     try {
         const data = await response.json();
+        console.log(data);
         return data;
     } catch(error) {
         console.log('error', error);
@@ -57,10 +58,11 @@ const postData = async (url = '', data = {}) => {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-
             'Content-Type': 'application/json',
-        },            
-    })
+        },  
+        body: JSON.stringify(data),          
+    });
+    
     try {
         const newData = response.json();
         return newData;
