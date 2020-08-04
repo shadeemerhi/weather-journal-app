@@ -25,7 +25,7 @@ function performAction () {
     .then(function(data) {
         console.log('Check 3 - After API Call');
         postData('/addData', {
-            temperature: data.main.temp,
+            temperature: Math.round(data.main.temp-273),
             date: currentDate,
             userResponse: feelings
         })
@@ -62,7 +62,7 @@ const postData = async (url = '', data = {}) => {
         },  
         body: JSON.stringify(data),          
     });
-    
+
     try {
         const newData = response.json();
         return newData;
@@ -81,7 +81,7 @@ const updateUI = async () => {
     try {
         const allData = await request.json();
         console.log(allData);
-        document.getElementById('temp').innerHTML = allData.temperature;
+        document.getElementById('temp').innerHTML = `${allData.temperature} C`;
         document.getElementById('date').innerHTML = allData.date;
         document.getElementById('content').innerHTML = allData.userResponse;
 
