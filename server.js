@@ -42,7 +42,6 @@ function sendData (request, response) {
     console.log('Response Sent');
 }
 
-
 app.post('/addData', function (request, response) {
         let newEntry = {
         temperature: request.body.temperature,

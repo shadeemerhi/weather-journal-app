@@ -25,26 +25,40 @@ body{
 }
 
 #entryHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+#dataHolder{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-evenly;
 }
 
 #date{
-
+    border-bottom: 2px solid #3b4a6b;
 }
 
 #temp{
-
+    border-bottom: 2px solid #3b4a6b;
 }
 
 #content{
-
+    border-bottom: 2px solid #3b4a6b;
 }
 
 .headline {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 50px;
 
 }
 .title{
-
+    border-bottom: 2px solid #22b2da;
+    font-size: 1.5em;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -67,13 +81,23 @@ input{
 button{
     width: 400px;
     height: 100px;
-    background: #3b4a6b;
+    background: #4e628e;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
-    box-shadow: 2px 4px 5px #444;
+    box-shadow: 2px 9px 5px rgb(79, 79, 79);
 }
+
+button:hover{
+    background: grey;
+    color: azure;
+}
+
+button:active{
+    transform: translateY(4px);
+}
+
 h1{
     font-size: 36px;
 }
@@ -107,5 +131,4 @@ button:focus {
 ::-ms-input-placeholder { /* Microsoft Edge */ 
     color: #f0d43a; 
     font-family: 'Oswald', sans-serif;
-
 } 
