@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
-const port = 4000;
+const port = 4200;
 const server = app.listen(port, listening);
 
 function listening () {
@@ -42,13 +42,22 @@ function sendData (request, response) {
 }
 
 // Post Route
-app.post('/addData', addData);
+// app.post('/addData', addData);
 
-function addData(request, response) {
-    let newEntry = {
+// function addData(request, response) {
+//     let newEntry = {
+//         temperature: request.body.temperature,
+//         date: request.body.date,
+//         userResponse: request.body.userResponse
+//     }
+//     projectData.push(newEntry);
+// }
+
+app.post('/addData', function (request, response) {
+        let newEntry = {
         temperature: request.body.temperature,
         date: request.body.date,
         userResponse: request.body.userResponse
     }
-    projectData.push(newEntry);
-}
+    response.send(projectData);
+})

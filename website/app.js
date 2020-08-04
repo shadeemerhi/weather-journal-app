@@ -1,5 +1,5 @@
 // Personal API Key for OpenWeatherMap API
-const baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
+let baseURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const apiKey = '&appid=02eeb440d2c88907ac4d58e8cc4b16a4';
 
 // Creating JS Date object for the current date
@@ -17,26 +17,31 @@ function performAction () {
     // 1. Get the weather data from the API, then,
     // 2. POST the data to the server, then,
     // 3. update the UI with a GET request to server
-    const city = document.getElementById('city').value;
-    const feelings = document.getElementById('feelings').value;
+    let city = document.getElementById('city').value;
+    let feelings = document.getElementById('feelings').value;
+    console.log('Check 1');
 
     getWeatherData(baseURL, city, apiKey)
     .then(function(data) {
+        console.log('Check 3 - After API Call');
         postData('/addData', {
             temperature: data.main.temp,
             date: currentDate,
             userResponse: feelings
         })
+        console.log('Here is the date: ' + currentDate);
+        console.log(data.main.temp);
     })
-    .then(
-        updateUI()
-    )
+    .then(function() {
+        updateUI();
+    })
 }
 
 /* Function to GET Web API Data*/
 const getWeatherData = async (baseURL, city, apiKey) => {
 
     const response = await fetch(baseURL+city+apiKey);
+    console.log('Check 2 - Inside API call');
     try {
         const data = await response.json();
         return data;
@@ -69,14 +74,17 @@ const postData = async (url = '', data = {}) => {
 const updateUI = async () => {
 
     // GET REQUEST to the server
+    console.log('Check 4 - Inside UI Update');
     const request = await fetch('/all');
     try {
         const allData = await request.json();
-        document.getElementById('date').innerHTML = allData[0].date;
+        console.log(allData);
         document.getElementById('temp').innerHTML = allData[0].temperature;
+        document.getElementById('date').innerHTML = allData[0].date;
         document.getElementById('content').innerHTML = allData[0].userResponse;
 
     }catch(error) {
         console.log('error', error);
     }
+    console.log('Check 5 - After GET');
 }
