@@ -39,6 +39,7 @@ app.get('/all', sendData);
 // Callback function to complete GET '/all'
 function sendData (request, response) {
     response.send(projectData);
+    console.log('Response Sent');
 }
 
 // Post Route
